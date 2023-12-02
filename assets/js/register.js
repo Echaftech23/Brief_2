@@ -21,9 +21,6 @@ function checkInputs(){
         e.preventDefault();
         setErrorFor(username, 'Unvalid Username.');
     }
-    else{
-        setSuccessFor(username);
-    }
     // for Email.
     if(emailValue === ''){
         e.preventDefault();
@@ -32,9 +29,6 @@ function checkInputs(){
     else if(!isEmail(emailValue)){
         e.preventDefault();
         setErrorFor(email, 'Email is not valid');
-    }
-    else{
-        setSuccessFor(email);
     }
     // for Password.
     if(passwordValue === ''){
@@ -55,9 +49,4 @@ function setErrorFor(input, message){
 
     //add Error class
     formControl.className = 'form-controls error';
-}
-function setSuccessFor(input){
-    const formControl = input.parentElement;
-    //add Error class
-    formControl.className = 'form-controls success';
 }

@@ -66,9 +66,6 @@ small{
 .form-controls.error .error-mg{
     visibility: visible;
 }
-.form-controls.success input{
-    border-color: #F5C518 !important;
-}
 .signin-link{
     margin-top: 50px;
 }
