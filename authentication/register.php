@@ -1,7 +1,7 @@
 <?php
     if (isset($_SESSION['auth'])) {
 
-        $_SESSION['message'] = "You are Already Logged In ";
+        $_SESSION['message'] = "You are Already Registered";
         header('Location: ../index.php');
         exit();
     }

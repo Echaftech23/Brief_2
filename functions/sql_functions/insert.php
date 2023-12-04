@@ -1,5 +1,4 @@
 <?php
-    // include __DIR__ . "/../config/connection.php";
     include __DIR__ . "/../../config/connection.php";
 
     function insertData($tableName, $data, $types) {
