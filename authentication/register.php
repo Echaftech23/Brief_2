@@ -39,7 +39,7 @@
                 }
                 ?>
                 <h1 class="text-center">Create account</h1>
-                <form method="post" action="../functions/authcode.php" id="form">
+                <form method="post" action="../functions/register.php" id="form">
                     <label for="form-username">Your Name</label>
                     <div class="form-controls">
                         <input type="text" name="username" id="form-username" placeholder="Your First and last name" class="input-pd">
@@ -64,7 +64,7 @@
                         <input type="password" name="cpassword" id="form-confirmed-password" class="input-pd">
                         <small>Error message</small>
                     </div>
-                    <button type="submit" id="submit" name="register_btn">Create your MovieMingle account</button>
+                    <button type="submit" id="submit" name="submit">Create your MovieMingle account</button>
                 </form>
                 <p class="signin-link">Already have an account? <a href="signin_choice.php">Sign in</a></p>
             </div>

@@ -44,7 +44,7 @@
                 }
             ?>
             <h1 class="text-center">Login in</h1>
-            <form method="POST" action="../functions/authcode.php" id="form">
+            <form method="POST" action="../functions/login.php" id="form">
                 <label for="form-email">Email</label>
                 <div class="form-controls">
                     <input type="text" name="email" id="form-email" placeholder="Enter Your Email" class="input-pd">
@@ -57,7 +57,7 @@
                     <p class="form-control-caracter d-none">Enter Your password</p>
                     <small>Error message</small>
                 </div>
-                <button id="submit" name="login_btn">Sign in</button>
+                <button id="submit" name="submit">Sign in</button>
             </form>
             <p class="signin-link">Don't have an account?<a href="register.php"> Sign up</a></p>
         </div>

@@ -4,7 +4,7 @@ const email = document.getElementById('form-email');
 const password = document.getElementById('form-password');
 const username = document.getElementById('form-username');
 
-form.addEventListener('submit', (e) =>{
+form.addEventListener('keyup', function(){
     checkInputs();
 })
 
@@ -14,25 +14,20 @@ function checkInputs(){
     const usernameValue = username.value.trim();
     // for Username :
     if(usernameValue === ''){
-        e.preventDefault();
         setErrorFor(username, 'Username cannot be Blank');
     }
     else if(!isUsername(usernameValue)){
-        e.preventDefault();
         setErrorFor(username, 'Unvalid Username.');
     }
     // for Email.
     if(emailValue === ''){
-        e.preventDefault();
         setErrorFor(email, 'Email cannot be Blank');
     }
     else if(!isEmail(emailValue)){
-        e.preventDefault();
         setErrorFor(email, 'Email is not valid');
     }
     // for Password.
     if(passwordValue === ''){
-        e.preventDefault();
         setErrorFor(password, 'Password cannot be Blank');
     }
 }
