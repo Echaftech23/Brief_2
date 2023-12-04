@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include "select.php";
+    include "../sql_functions/select.php";
 
     if(isset($_POST['submit'])){
         $data = [
@@ -21,18 +21,16 @@
                     'email' => $userData['email']
                 ];
                 $_SESSION['message'] = "Logged In Successfully";
-                header('Location: ../index.php');
+                header('Location: ../../index.php');
             } 
             else {
                 $_SESSION['message'] = "Incorrect Password";
-                header('Location: ../authentication/login.php');
+                header('Location: ../../authentication/login.php');
             }
         }
         else{
             $_SESSION['message'] = "Invalid Credentials";
-            header('Location: ../authentication/login.php');
+            header('Location: ../../authentication/login.php');
         }
-
-        
     }
 ?>

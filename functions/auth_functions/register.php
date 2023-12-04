@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    include "insert.php";
-    include "select.php";
+    include "../sql_functions/insert.php";
+    include "../sql_functions/select.php";
 
     if(isset($_POST['submit'])){
         $data = [
@@ -15,7 +15,7 @@
         
         if($result->num_rows > 0){
             $_SESSION['message'] = "Email Already Registered";
-            header('Location: ../authentication/register.php');
+            header('Location: ../../authentication/register.php');
         }
         else{
             if($data["password"] == $cpassword){
@@ -25,16 +25,16 @@
 
                 if($stmt->affected_rows > 0){
                     $_SESSION['message'] = "Registered Successfully";
-                    header('Location: ../authentication/login.php');
+                    header('Location: ../../authentication/login.php');
                 }
                 else{
                     $_SESSION['message'] = "Somthing went wrong";
-                    header('Location: ../authentication/.php');
+                    header('Location: ../../authentication/.php');
                 }
             }
             else{
                 $_SESSION['message'] = "Password do not match";
-                header('Location: ../authentication/register.php');
+                header('Location: ../../authentication/register.php');
             }
         }
     }

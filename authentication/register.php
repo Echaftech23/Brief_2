@@ -39,7 +39,7 @@
                 }
                 ?>
                 <h1 class="text-center">Create account</h1>
-                <form method="post" action="../functions/register.php" id="form">
+                <form method="post" action="../functions/auth_functions/register.php" id="form">
                     <label for="form-username">Your Name</label>
                     <div class="form-controls">
                         <input type="text" name="username" id="form-username" placeholder="Your First and last name" class="input-pd">

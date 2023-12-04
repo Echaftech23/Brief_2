@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . "/../config/connection.php";
+    include __DIR__ . "/../../config/connection.php";
 
     function selectData($tableName, $columns = ['*'], $condition = '', $data, $types ='') {
         global $connexion, $result;

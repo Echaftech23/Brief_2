@@ -99,7 +99,7 @@
                         <img src="assets/img/home-page/hero-bg-1.png" class="d-block w-100" alt="img">
                         <div class="text text-white d-flex justify-content-center align-items-end gap-3 pb-2 px-lg-5 px-2">
                             <div class="img-wrapper">
-                                <img src="assets/img/home-pages/casaDePapel.png" alt="img">
+                                <img src="assets/img/home-page/casaDePapel.png" alt="img">
                             </div>
                             <i class="fa-regular fa-circle-play fs-1 align-self-center"></i>
                             <div class="">

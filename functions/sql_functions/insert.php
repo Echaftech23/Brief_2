@@ -1,6 +1,6 @@
 <?php
-    // include __DIR__ . "../../../../htdocs/brief_2/config/connection.php";
-    include __DIR__ . "/../config/connection.php";
+    // include __DIR__ . "/../config/connection.php";
+    include __DIR__ . "/../../config/connection.php";
 
     function insertData($tableName, $data, $types) {
         global $stmt, $connexion; 
