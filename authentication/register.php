@@ -5,7 +5,7 @@
         header('Location: ../index.php');
         exit();
     }
-    include('includes/navbar.php');
+    include('../includes/navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +69,6 @@
                 <p class="signin-link">Already have an account? <a href="signin_choice.php">Sign in</a></p>
             </div>
         </section>
-        <?php include('includes/footer.php'); ?>
+        <?php include('../includes/footer.php'); ?>
     </body>
 </html>

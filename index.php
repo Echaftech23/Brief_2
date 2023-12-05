@@ -40,7 +40,7 @@
                 session_start();
                 if (isset($_SESSION['auth'])) {
                 ?>
-                    <a href="dashboard.php" class="fw-semibold text-white d-none d-md-block"> Watchlist</a>
+                    <a href="users/dashboard.php" class="fw-semibold text-white d-none d-md-block"> Watchlist</a>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown">
@@ -56,7 +56,7 @@
                 <?php
                 } else {
                 ?>
-                    <a href="login.php" class="fw-semibold text-white d-none d-md-block"> Watchlist</a>
+                    <a href="authentication/login.php" class="fw-semibold text-white d-none d-md-block"> Watchlist</a>
                     <a href="authentication/signin_choice.php" class="fw-bold text-white d-none d-md-block">signIn</a>
                 <?php
                 }

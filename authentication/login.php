@@ -1,5 +1,5 @@
 <?php     
-    include('includes/navbar.php');
+    include('../includes/navbar.php');
     if(isset($_SESSION['auth'])){
         unset($_SESSION['auth']);
         unset($_SESSION['auth_user']);
@@ -62,6 +62,6 @@
             <p class="signin-link">Don't have an account?<a href="register.php"> Sign up</a></p>
         </div>
     </section>
-    <?php include ('includes/footer.php'); ?>
+    <?php include ('../includes/footer.php'); ?>
 </body>
 </html>

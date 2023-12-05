@@ -1,7 +1,7 @@
 <nav class="bg-black">
     <div class="container d-flex justify-content-between gap-md-3 gap-lg-5 align-items-center">
         <div class="d-flex w-sm-100 align-items-center justify-content-between gap-3">
-            <div class="logo"><img class="img-fluid" src="../assets/img/logo.png" alt="logo"></div>
+            <div class="logo"><img class="img-fluid" src="../assets/img/home-page/logo.png" alt="logo"></div>
             <div class="menu"><i class="fa-solid fa-bars fs-3 text-white"></i></div>
         </div>
         <div class="search-wrapper flex-grow-1">
@@ -22,7 +22,7 @@
                         <li><a class="dropdown-item" href="dashboard.php">Your activity</a></li>
                         <li><a class="dropdown-item" href="favorite.php">Your watchlist</a></li>
                         <li><a class="dropdown-item" href="#">Account setings</a></li>
-                        <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+                        <li><a class="dropdown-item" href="../authentication/logout.php">Sign out</a></li>
                     </ul>
                 </div>
             <?php

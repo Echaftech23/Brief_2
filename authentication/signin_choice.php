@@ -20,7 +20,7 @@
     </head>
     <body>
 
-    <?php include ('includes/navbar.php'); ?>
+    <?php include ('../includes/navbar.php'); ?>
 
     <section class="sign-in">
         <div class="container d-flex">
@@ -102,7 +102,7 @@
         </div>
     </section>
 
-    <?php include ('includes/footer.php'); ?>
+    <?php include ('../includes/footer.php'); ?>
 
 </body>
 </html>
