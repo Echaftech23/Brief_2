@@ -8,7 +8,7 @@
             "password" => mysqli_real_escape_string($connexion, $_POST['password'])
         ];
 
-        $result = selectData("users", ['username', 'email', 'password'], "email = ?", ['email' => $data['email']], $types ='s');
+        $result = selectData("users", ['username', 'email', 'password'], ['email' => $data['email']], $types ='s');
 
         //check if email exist  :
         if($result->num_rows === 1){

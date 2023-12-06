@@ -11,7 +11,7 @@
         ];
         $cpassword = mysqli_real_escape_string($connexion, $_POST['cpassword']);
         //check if the user already registered using selsct function:
-        $result = selectData("users", ['email'], "email = ?", ['email' => $data['email']], $types ='s');
+        $result = selectData("users", ['email'], ['email' => $data['email']], $types ='s');
         
         if($result->num_rows > 0){
             $_SESSION['message'] = "Email Already Registered";
