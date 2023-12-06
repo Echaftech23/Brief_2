@@ -1,3 +1,12 @@
+<?php     
+    include('../includes/navbar.php');
+    if(!isset($_SESSION['auth'])){
+
+        $_SESSION['message'] = "You are not authorised to access this page";
+        header('Location: ../index.php');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,11 +28,14 @@
 
     <!-- file js-->
     <script src="../assets/js/bootstrap.bundle.min.js" defer></script>
-
+    <style>
+    .swiper-wrapper {
+        height: auto;
+    }
+    </style>
 </head>
 
 <body class=" bg-black">
-    <?php include('../includes/navbar.php'); ?>
     <div class="container d-flex justify-content-between gap-md-3 gap-lg-5 align-items-center position-relative">
         <div class="d-none">
             <div class="logo"><img class="img-fluid" src="assets/img/logo.png d-none" alt="logo"></div>
@@ -72,7 +84,7 @@
 
                 <!-- reviews swiper -->
 
-                <div class="swiper mySwiper p-2 rounded-4">
+                <div class="swiper mySwiper p-2 rounded-4 h">
                     <h1 class="title p-2 fs-5">Your reviews</h1>
                     <div class="swiper-wrapper ">
                         <div class="swiper-slide">
