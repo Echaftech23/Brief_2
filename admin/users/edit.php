@@ -1,6 +1,6 @@
 <?php
-    include ('../functions/sql_functions/update.php');
-    // include ('../functions/sql_functions/select.php');
+    include ('../../functions/sql_functions/update.php');
+    include ('../../functions/sql_functions/select.php');
 
     if(isset($_POST['update'])){
 

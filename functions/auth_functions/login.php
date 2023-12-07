@@ -13,7 +13,7 @@
         //check if email exist  :
         if($result->num_rows === 1){
             $userData = $result->fetch_assoc();
-
+     
             if(password_verify($data['password'], $userData['password'])){
                 $_SESSION['auth'] = true;
                 $_SESSION['auth_user'] = [

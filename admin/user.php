@@ -1,7 +1,13 @@
 <?php
-include('users/add.php');
+// include('users/add.php');
 include('users/delete.php');
 // include('users/edit.php');
+if (!isset($_SESSION['isAdmin'])) {
+
+    $_SESSION['message'] = "You are not authorised to access this page";
+    header('Location: ../index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +95,6 @@ include('users/delete.php');
                             <button type="button" class="btn btn-outline-warning bg-warning text-black" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add User</button>
                             <form class="d-flex" role="search">
                                 <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
                             </form>
                         </div>
                     </nav>
@@ -115,7 +120,7 @@ include('users/delete.php');
                                     <td><?php echo $rows['role'] ?></td>
                                     <td>
                                         <!-- <a href="users/edit.php?= $rows['id']?>" class="btn bg-dark text-white">Edit</a>  -->
-                                        <a href="user.php?id<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Edit</a>
+                                        <a href="sdsuser.php?id=<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Edit</a>
                                         <a href="user.php?id=<?= $rows['id'] ?>" class="btn  btn btn-warning">Delete</a>
                                     </td>
                                 </tr>
@@ -142,10 +147,10 @@ include('users/delete.php');
 
                                 if (isset($_GET['id'])) {
                                     $condition = ["id" => mysqli_real_escape_string($connexion, $_GET['id'])];
-                                    $result = selectData("users", ['*'], $condition, 's');
+                                    $modalResult = selectData("users", ['*'], $condition, 's');
 
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
+                                    if ($modalResult->num_rows > 0) {
+                                        while ($row = $modalResult->fetch_assoc()) {
                                             $username = $row['username'];
                                             $email = $row['email'];
                                             $password = $row['password'];
