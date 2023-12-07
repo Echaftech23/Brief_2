@@ -28,4 +28,6 @@
     }
     // Sectect function :
     $result = selectData("users", ['*'], [], '');
+
+
 ?>

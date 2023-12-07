@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- file js-->
-    <script src="../assets/js/sign-in.js" defer></script>
+    <script src="../assets/js/register.js" defer></script>
     <script src="../assets/js/bootstrap.bundle.min.js" defer></script>
 
 </head>

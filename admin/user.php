@@ -1,7 +1,7 @@
 <?php
-    include('users/add.php');
-    include('users/delete.php');
-    // include('users/edit.php');
+include('users/add.php');
+include('users/delete.php');
+// include('users/edit.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,7 @@
 
     <!-- font-awesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../assets/css/favorite.css">
     <!-- bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- file js -->
     <script src="../assets/js/favorite.js" defer></script>
 </head>
@@ -84,39 +84,48 @@
             <!-- content -->
             <div class="content d-flex flex-column align-items-center gap-5 m-1 col-md-9 col-9 min-vh-100 p-2 p-md-5">
                 <div class="col-lg-12">
-                    <button type="button" class="btn btn-outline-warning bg-warning text-black" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add User</button>
-                </div>
-                <table class="table table-striped col-12 bg-white">
-                    <thead>
-                        <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">email</th>
-                        <th scope="col">role</th>
-                        <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            while ($rows = mysqli_fetch_assoc($result)) 
-                            { 
-                               ?>   
+                    <nav class="navbar">
+                        <div class="container-fluid p-2">
+                            <button type="button" class="btn btn-outline-warning bg-warning text-black" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add User</button>
+                            <form class="d-flex" role="search">
+                                <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </nav>
+
+                    <table id='myTable' class="table table-striped col-12 bg-white">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">email</th>
+                                <th scope="col">role</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <?php
+                            while ($rows = mysqli_fetch_assoc($result)) {
+                            ?>
                                 <tr>
-                                    <th scope="row"><?php echo $rows['id']?></th>
-                                    <td><?php echo $rows['username']?></td>
-                                    <td><?php echo $rows['email']?></td>
-                                    <td><?php echo $rows['role']?></td>
+                                    <th scope="row"><?php echo $rows['id'] ?></th>
+                                    <td><?php echo $rows['username'] ?></td>
+                                    <td><?php echo $rows['email'] ?></td>
+                                    <td><?php echo $rows['role'] ?></td>
                                     <td>
-                                            <!-- <a href="users/edit.php?= $rows['id']?>" class="btn bg-dark text-white">Edit</a>  -->
-                                    <a href="user.php?id<?= $rows['id']?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap" >Edit</a>
-                                    <a href="user.php?id=<?= $rows['id']?>" class="btn  btn btn-warning">Delete</a>
+                                        <!-- <a href="users/edit.php?= $rows['id']?>" class="btn bg-dark text-white">Edit</a>  -->
+                                        <a href="user.php?id<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Edit</a>
+                                        <a href="user.php?id=<?= $rows['id'] ?>" class="btn  btn btn-warning">Delete</a>
                                     </td>
-                                </tr> 
-                                <?php
-                            } 
-                        ?>
-                    </tbody>
-                </table>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
             <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -131,29 +140,28 @@
                             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
                                 <?php
 
-                                    if (isset($_GET['id'])){
-                                        $condition = [ "id" => mysqli_real_escape_string($connexion , $_GET['id'])];
-                                        $result = selectData("users", ['*'], $condition, 's');
+                                if (isset($_GET['id'])) {
+                                    $condition = ["id" => mysqli_real_escape_string($connexion, $_GET['id'])];
+                                    $result = selectData("users", ['*'], $condition, 's');
 
-                                        if ($result->num_rows > 0) {
-                                            while($row = $result->fetch_assoc()) {
-                                                $username = $row['username'];
-                                                $email = $row['email'];
-                                                $password = $row['password'];
-                                                $role = $row['role'];
-                                                $id = $row['id'];
-                                            }
-                                            
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $username = $row['username'];
+                                            $email = $row['email'];
+                                            $password = $row['password'];
+                                            $role = $row['role'];
+                                            $id = $row['id'];
                                         }
                                     }
+                                }
                                 ?>
-                            
+
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Username:</label>
                                     <input type="text" name="username" class="form-control" id="recipient-name" value="<?php echo $username; ?>">
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Email:</label>
                                     <input type="text" name="email" class="form-control" id="recipient-name" value="<?php echo $email; ?>">
@@ -165,7 +173,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Role:</label>                            
+                                    <label for="message-text" class="col-form-label">Role:</label>
                                     <select name="role" class="form-select" aria-label="Default select example">
                                         <option selected value="user">user</option>
                                         <option value="admin">admin</option>
@@ -173,7 +181,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary bg-warning text-black " data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-secondary bg-warning text-black " data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" name="update" class="btn bg-black text-white">Update User</button>
                                 </div>
                             </form>
@@ -185,6 +193,50 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!--  Filtring data using AJAX -->
+    <script>
+        let search_input = document.getElementById('search-input');
+
+        search_input.addEventListener('keyup', (event) => {
+            let value = event.target.value;
+
+            const ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = () => {
+                if (ajax.readyState === 4 && ajax.status === 200) {
+                    const data = JSON.parse(ajax.responseText);
+                    showSearchData(data);
+                }
+            };
+
+            ajax.open('GET', `users/search.php?search=${value}`, true);
+            ajax.send();
+        })
+
+        function showSearchData(data) {
+            const tableBody = document.getElementById('userTableBody');
+            tableBody.innerHTML = '';
+
+            data.forEach(user => {
+
+                const rowTemplate = `
+                    <tr>
+                        <th scope="row">${user.id}</th>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.role}</td>
+                        <td>
+                            <a href="user.php?id=${user.id}" class="btn bg-dark text-white" 
+                            data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Edit</a>
+                            <a href="user.php?id=${user.id}" class="btn btn-warning">Delete</a>
+                        </td>
+                    </tr>
+                `;
+
+                tableBody.innerHTML += rowTemplate;
+            });
+        }
+    </script>
 
 </body>
 
