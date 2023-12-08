@@ -1,13 +1,13 @@
 <?php
-// include('users/add.php');
-include('users/delete.php');
+include('users/add.php');
+// include('users/delete.php');
 // include('users/edit.php');
-if (!isset($_SESSION['isAdmin'])) {
+// if (!isset($_SESSION['isAdmin'])) {
 
-    $_SESSION['message'] = "You are not authorised to access this page";
-    header('Location: ../index.php');
-    exit();
-}
+//     $_SESSION['message'] = "You are not authorised to access this page";
+//     header('Location: ../index.php');
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,7 +120,7 @@ if (!isset($_SESSION['isAdmin'])) {
                                     <td><?php echo $rows['role'] ?></td>
                                     <td>
                                         <!-- <a href="users/edit.php?= $rows['id']?>" class="btn bg-dark text-white">Edit</a>  -->
-                                        <a href="sdsuser.php?id=<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Edit</a>
+                                        <a data-id="" href="user.php?id=<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" onClick="edit('.$rows['id'].')" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Editd</a>
                                         <a href="user.php?id=<?= $rows['id'] ?>" class="btn  btn btn-warning">Delete</a>
                                     </td>
                                 </tr>
@@ -217,6 +217,7 @@ if (!isset($_SESSION['isAdmin'])) {
             ajax.open('GET', `users/search.php?search=${value}`, true);
             ajax.send();
         })
+
 
         function showSearchData(data) {
             const tableBody = document.getElementById('userTableBody');

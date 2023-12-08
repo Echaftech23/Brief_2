@@ -1,7 +1,7 @@
 <?php
-    include('../../config/connection.php');
-    include('../../functions/sql_functions/insert.php');
-    include('../../functions/sql_functions/select.php');
+    include('../config/connection.php');
+    include('../functions/sql_functions/insert.php');
+    include('../functions/sql_functions/select.php');
 
     if (isset($_POST['submit'])) {
 
