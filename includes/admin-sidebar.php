@@ -2,28 +2,28 @@
 <div class="sidebar col-auto col-md-3 min-vh-100 ">
     <div class="side-content d-flex flex-column align-items-center  ">
         <div class="profil d-flex flex-column align-items-center gap-3">
-            <img src="../../assets/img/dashboard/user.png" alt="">
+            <img src="../assets/img/dashboard/user.png" alt="">
             <?php
-                if (isset($_SESSION['auth'])) {
-                ?>
-                    <div class="nav-item dropdown">
-                        <span class="d-none d-md-inline"><?= $_SESSION['auth_user']['username']; ?></span>
-                    </div>
-                <?php
-                }
+            if (isset($_SESSION['auth'])) {
+            ?>
+                <div class="nav-item dropdown">
+                    <span class="d-none d-md-inline"><?= $_SESSION['auth_user']['username']; ?></span>
+                </div>
+            <?php
+            }
             ?>
         </div>
         <ul class="nav d-flex flex-column">
             <li>
-                <a href="../dashboard.php" class="text-decoration-none text-white px-4 py-2"><i class=" fa-solid fa-border-all"></i>
-                <span class="d-none d-md-inline">Dashboard</span></a>
+                <a href="dashboard.php" class="text-decoration-none text-white px-4 py-2"><i class=" fa-solid fa-border-all"></i>
+                    <span class="d-none d-md-inline">Dashboard</span></a>
             </li>
 
             <li>
                 <a href="user.php" class="text-decoration-none text-white px-4 py-2"><i class=" fa-regular fa-user"></i> <span class="d-none d-md-inline">Users</span></a>
             </li>
 
-            <li><a href="movie.php" class="text-decoration-none text-warning px-4 py-2"><i class=" fa-regular fa-heart"></i> <span class="d-none d-md-inline text-warning">Movies</span></a>
+            <li><a href="movie.php" class="text-decoration-none text-warning px-4 py-2"><i class=" fa-solid fa-film"></i> <span class="d-none d-md-inline text-warning">Movies</span></a>
             </li>
 
             <li>

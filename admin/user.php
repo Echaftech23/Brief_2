@@ -1,7 +1,7 @@
 <?php
+
 include('users/add.php');
 // include('users/delete.php');
-// include('users/edit.php');
 // if (!isset($_SESSION['isAdmin'])) {
 
 //     $_SESSION['message'] = "You are not authorised to access this page";
@@ -37,7 +37,7 @@ include('users/add.php');
 </head>
 
 <body class=" bg-black">
-    <!-- <?php include('../includes/navbar.php') ?> -->
+    <?php include('../includes/navbar.php') ?>
 
     <section class="container">
         <div class="row flex-nowrap">
@@ -119,11 +119,55 @@ include('users/add.php');
                                     <td><?php echo $rows['email'] ?></td>
                                     <td><?php echo $rows['role'] ?></td>
                                     <td>
-                                        <!-- <a href="users/edit.php?= $rows['id']?>" class="btn bg-dark text-white">Edit</a>  -->
-                                        <a data-id="" href="user.php?id=<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" onClick="edit('.$rows['id'].')" data-bs-target="#editModal" data-bs-whatever="@getbootstrap">Editd</a>
+                                        <a href="user.php?id=<?= $rows['id'] ?>" class="btn bg-dark text-white" data-bs-toggle="modal" data-bs-target="#editModal<?= $rows['id'] ?>" data-bs-whatever="@getbootstrap">Editd</a>
                                         <a href="user.php?id=<?= $rows['id'] ?>" class="btn  btn btn-warning">Delete</a>
                                     </td>
                                 </tr>
+                                <div class="modal fade" id="editModal<?= $rows['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog text-black">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-white ">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Movie To Home page:</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body bg-white ">
+                                                <!-- the form -->
+                                                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="edit" enctype="multipart/form-data">
+
+
+                                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                                    <div class="mb-3">
+                                                        <label for="recipient-name" class="col-form-label">Username:</label>
+                                                        <input type="text" name="username" class="form-control" id="recipient-name" value="<?php echo $rows['username'] ?>">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="message-text" class="col-form-label">Email:</label>
+                                                        <input type="text" name="email" class="form-control" id="recipient-name" value="<?php echo $rows['email'] ?>">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="message-text" class="col-form-label">Password:</label>
+                                                        <input type="password" name="password" class="form-control" id="recipient-name" value="<?php echo $rows['password']; ?>">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="message-text" class="col-form-label">Role:</label>
+                                                        <select name="role" class="form-select" aria-label="Default select example">
+                                                            <option selected value="<?php echo $rows['role'] ?>"><?php echo $rows['role'] ?></option>
+                                                            <option value="user"><?php echo $rows['role'] === "admin" ? "user" : "admin" ; ?></option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary bg-warning text-black " data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" name="update" class="btn bg-black text-white">Update User</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php
                             }
                             ?>
@@ -133,67 +177,7 @@ include('users/add.php');
 
             </div>
 
-            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog text-black">
-                    <div class="modal-content">
-                        <div class="modal-header bg-white ">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Movie To Home page:</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body bg-white ">
-                            <!-- the form -->
-                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-                                <?php
 
-                                if (isset($_GET['id'])) {
-                                    $condition = ["id" => mysqli_real_escape_string($connexion, $_GET['id'])];
-                                    $modalResult = selectData("users", ['*'], $condition, 's');
-
-                                    if ($modalResult->num_rows > 0) {
-                                        while ($row = $modalResult->fetch_assoc()) {
-                                            $username = $row['username'];
-                                            $email = $row['email'];
-                                            $password = $row['password'];
-                                            $role = $row['role'];
-                                            $id = $row['id'];
-                                        }
-                                    }
-                                }
-                                ?>
-
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Username:</label>
-                                    <input type="text" name="username" class="form-control" id="recipient-name" value="<?php echo $username; ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Email:</label>
-                                    <input type="text" name="email" class="form-control" id="recipient-name" value="<?php echo $email; ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Password:</label>
-                                    <input type="password" name="password" class="form-control" id="recipient-name" value="<?php echo $password; ?>">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Role:</label>
-                                    <select name="role" class="form-select" aria-label="Default select example">
-                                        <option selected value="user">user</option>
-                                        <option value="admin">admin</option>
-                                    </select>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary bg-warning text-black " data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="update" class="btn bg-black text-white">Update User</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </section>

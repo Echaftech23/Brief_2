@@ -1,3 +1,4 @@
+<?php include('movies/add.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
 
     <!-- font-awesome css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="../assets/css/favorite.css">
     <!-- bootstrap js -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- file js -->
     <script src="../assets/js/favorite.js" defer></script>
 </head>
@@ -177,8 +178,8 @@
                 </div>
                 <button type="button" class="btn btn-outline-light mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add to favorite</button>
                 <?php
-                    while ($rows = mysqli_fetch_assoc($result)) {
-                        echo '
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    echo '
                                 <div class="movies-container d-flex align-items-start">
                                     <div class="-image-item">
                                         <img src="../assets/img/dashboard/' . $rows['image_path'] . '" alt="movie image" width="130px" height="200px">
@@ -202,7 +203,7 @@
                                     </div>
                                 </div>
                             ';
-                    }
+                }
                 ?>
 
             </div>
